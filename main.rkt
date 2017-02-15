@@ -32,15 +32,14 @@
       (define currentEq (createEquation oAnswer sign currentNumber));
 
       ;Calculate the current Equation
-
-      ;(eval (read (open-input-string currentEq)) ns)
-      (define currentAnswer 2)
-      (display currentEq)
+      (define currentAnswer (eval (read (open-input-string currentEq)) ns))
+      
+      ;Display the calculation
       (display (string-append (~v currentEq) " = "(~v currentAnswer) "\n") )
       
       ;Evaluate if answer is equal to the answer number
       (if ( = currentAnswer answerNumber)
-          (display (string-append "success" "\n" )) (printf (string-append "failure" "\n"))) ;TODO return)
+          (display (string-append  " success" "\n" )) (printf (string-append " failure" "\n" ))) ;TODO return)
       ;Evaluate if the answer is a negative number or a fraction
       ;(if ((<= answer 0) or ((modulo answer 2) not 0) )
       ;     (display "answer is uneven, return") (display"continue calculations"));TODO return
@@ -53,7 +52,7 @@
 
      ;Method for calculating the current equation
 (define (createEquation oAnswer sign currentNumber)
-  (string-append "( " (~v sign) " " (~v oAnswer)" " (~v currentNumber) " )")
+  (string-append "( " sign " " (~v oAnswer)" " (~v currentNumber) " )")
 )
 
 ;Call the main search method
