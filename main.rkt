@@ -8,14 +8,17 @@
 
       ;Initialise variables
 ;List of the six numbers, not random for now
-(define l (list 2 3 25 100 5 75))
+(define l (list 2 3 25 5 5 75))
 ;The numerical answer for the equations to calculate it
-(define answerNumber 6)
+(define answerNumber 699)
 ;Define the possible equation list
 (define answerEquations (list))
 (define signList (list "+" "-" "*" "/" ))
 (define permCount 0)
 (define rightPerm 0)
+
+
+
 
 
 
@@ -54,23 +57,17 @@
               ;Call the function again 
               (findAnswers originalList currentEq))
             
-            (display ""));TODO return
-        ;Evaulate whether the list is empty and if so call;the same function recursively
-        ;TODO loop function
-        
+            (display ""))
         )
-      ;(or ((modulo currentAnswer 2) not 0))
-      ; (if (<= currentAnswer 0 )
   )
  )
 
 
-;Original method to call with
+    ;Original method to call with
 (define (setCreate currentList)
   (define sets(permutations currentList)
     )
   (for ([set sets])
-    ;(display set)
     (define firstValue (car set))
     (set! set (remove firstValue set))
     (findAnswers set firstValue)
@@ -82,7 +79,7 @@
   (~a "( " sign " "   oAnswer  " "  (~v currentNumber) " )")
 )
 
-;Call the main search method
+    ;Call the main search method
 ( setCreate l  )
 (display (~a "Total Permutations: " permCount "\n"))
 (display (~a "Correct Permutations: " rightPerm ))
