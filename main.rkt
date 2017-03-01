@@ -8,13 +8,14 @@
 
       ;Initialise variables
 ;List of the six numbers, not random for now
-(define l (list 2 3 4 5 6 4 ))
+(define l (list 2 3 25 100 5 75))
 ;The numerical answer for the equations to calculate it
 (define answerNumber 6)
 ;Define the possible equation list
 (define answerEquations (list))
 (define signList (list "+" "-" "*" "/" ))
 (define permCount 0)
+(define rightPerm 0)
 
 
 
@@ -22,7 +23,6 @@
 
      ;Initial method for beginning the search
 (define(findAnswers originalList oAnswer )
-  
     ;Outer for loop iterating through each number in list
     (for([currentNumber originalList])
       ;Remove the used number from the current list
@@ -32,17 +32,16 @@
         
         ;Define the current equation
         (define currentEq (createEquation oAnswer sign currentNumber));
-        (display currentEq)
-        (display "\n")
         ;Calculate the current Equation
         (define currentAnswer (eval (read (open-input-string currentEq)) ns))
 
         ;Evaluate if answer is equal to the answer number
         (if ( = currentAnswer answerNumber)
             (begin
-              (display (string-append  " success" "\n" ))
-              (display (string-append (~v currentEq) " = "(~v currentAnswer) "\n") )
-              (set! permCount (+ permCount 1)))
+              ;(display (string-append  " success" "\n" ))
+              (display (~a  currentEq " = " currentAnswer "\n") )
+              (set! permCount (+ permCount 1))
+              (set! rightPerm (+ rightPerm 1)))
             
             (begin
               ;(display (string-append (~v currentEq) " = "(~v currentAnswer) "\n") )
@@ -52,12 +51,10 @@
         ;Evaluate if the answer is a negative number or a fraction
         (if (exact-positive-integer? currentAnswer )
             (begin
-              ;Display the calculation
-              ;(display (string-append (~v currentEq) " = "(~v currentAnswer) "\n") )
+              ;Call the function again 
               (findAnswers originalList currentEq))
             
-            (display "return \n"));TODO return
-        ; )
+            (display ""));TODO return
         ;Evaulate whether the list is empty and if so call;the same function recursively
         ;TODO loop function
         
@@ -82,11 +79,13 @@
 
      ;Method for calculating the current equation
 (define (createEquation oAnswer sign currentNumber)
-  (string-append "( " sign " " (~v oAnswer) " " (~v currentNumber) " )")
+  (~a "( " sign " "   oAnswer  " "  (~v currentNumber) " )")
 )
 
 ;Call the main search method
 ( setCreate l  )
-(display permCount)
+(display (~a "Total Permutations: " permCount "\n"))
+(display (~a "Correct Permutations: " rightPerm ))
+
 
 
