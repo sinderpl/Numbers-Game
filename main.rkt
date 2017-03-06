@@ -58,7 +58,7 @@
               ;(display (string-append  " success" "\n" ))
               ;(display (~a  currentEq " = " currentAnswer "\n") )
               ;(if
-              (set! answerEquations (cons currentEq answerEquations)))
+              (set! answerEquations (cons currentEq answerEquations))
               (set! permCount (+ permCount 1))
               (set! rightPerm (+ rightPerm 1)))
             
