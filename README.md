@@ -10,18 +10,22 @@ A numbers game imitating the popular countdown television game show. Using the R
 
 ReversePolishNotation.rkt
 =========================
-The file contains the check if RPN is valid code from class.
+The file contains my last minute attempt at ReversePolishNotation solving of the problem. I have not had time to complete this.
+I have  utilised some of the code given to us in class and created a method which fires it off for actual calculations of the equations.
 
 ForLoopGame.rkt
 ===============
 This has been my original brute force program that iterates through every possibile equation permutation.
 It is not the most efficient way of solving this problem but this was before the Reverse Polish Notation has been explained to us.
+On my laptop the program can finish the calculation in 1-2 minutes.
 
 This approach also involves the possibility of lower memory computers crashing from the memory running out. Using certain tweaks in the code I have managed to get the total number of permutations required for this calculation to around 900 thousand.
 
 The program is not efficent as it uses nested for loops for the equation numbers and signs, calling the method again each iteration.
+The program follows the idea of Tree data strcutures braching out into different options available for the equations.
 
  My modification included killing off any branches that equal to zero or less and are not positive, this was easy to achieve with some of rackets built in functions.
+ The program at this point returns and starts following other branches in the tree.
  ```
  (if (exact-positive-integer? currentAnswer )
 ```
