@@ -1,12 +1,11 @@
 #lang racket
-
 ;The base numbers and operators list
 (define numList (list '+ '+ '+  1 1 1 1))
 ;The answer number we are checking for
 (define answerNumber 4)
 ;Get all the permutations without any duplicates
 (define permsList (remove-duplicates (permutations numList)))
-; TODO Create the stack
+
 
 ;Function to check if the RPN is correct, this is the code from class
 (define (valid-rpn? e[s 0])
@@ -27,9 +26,25 @@
 (define (checkExpression perms)
   ;Check whether the expression is valid or not
   (if (valid-rpn? perms)
-      'true
-      'false
+      (evaluateRPN perms)
+      null
    )
 )
-  
-(map checkExpression permsList)
+
+;Calculate the RPN
+(define (evaluateRPN perms)
+  perms
+)
+
+;Main 
+(define ExpressionMap ( map checkExpression permsList))
+;ExpressionMap
+
+;Print the correct Equations, this is necessary as empty objects are added to the map
+(for([equation ExpressionMap])
+  ;Check whether the object is an expresion
+  (if( null? equation)
+     ""
+     (display (~a  equation " = " answerNumber "\n"))
+  )
+ )
