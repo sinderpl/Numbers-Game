@@ -132,6 +132,6 @@
 
 ;Display the resulting list
 (display "Equations list: \n")
-(for ([equation emra] )
+(for ([equation answers] )
    (display (~a equation " = " answerNumber "\n"))
 )
