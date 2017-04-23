@@ -8,6 +8,10 @@ Introduction
 ============
 A numbers game imitating the popular countdown television game show. Using the Racket functional programming language I have created a program that calculates the possible combinations of six numbers that evaluate in a Equation to a single answer number.
 
+ReversePolishNotation.rkt
+=========================
+The file contains the check if RPN is valid code from class.
+
 ForLoopGame.rkt
 ===============
 This has been my original brute force program that iterates through every possibile equation permutation.
