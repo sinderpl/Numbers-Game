@@ -33,8 +33,29 @@
 
 ;Calculate the RPN
 (define (evaluateRPN perms)
+  ;Create the current object value
+  
+  ;Create our stack object as a list
+  (define stack (list ))
+  (for ([n perms])
+    (if (number? n)
+        (display "yes")
+        (display "no")
+    )
+  )
   perms
 )
+
+;Adapted the following two stack methods from:
+;http://stackoverflow.com/questions/1041603/how-do-i-write-push-and-pop-in-scheme
+;Push to a list like a stack
+(define (push x a-list)
+  (set-box! a-list (cons x (unbox a-list))))
+;Pop from a list like a stack
+(define (pop a-list)
+  (let ((result (first (unbox a-list))))
+    (set-box! a-list (rest (unbox a-list)))
+    result))
 
 ;Main 
 (define ExpressionMap ( map checkExpression permsList))
