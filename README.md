@@ -88,5 +88,7 @@ Equations list:
 ```
   (define sets( remove-duplicates (permutations currentList))
 ```
+
+This seem to limit the search to 800k-850k in most cases.
 ### Limitations:
-* The program currently prints out duplicate answers to the equations
+* The program currently prints out duplicate answers to the equations (Solved) - The program now only displays singular type of equations. The Correct permutations counter accounts for all of them still.

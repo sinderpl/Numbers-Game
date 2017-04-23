@@ -128,9 +128,10 @@
 (display (~a "Total Permutations: " permCount "\n"))
 (display (~a "Correct Permutations: " rightPerm "\n"))
 
+(define answers (remove-duplicates answerEquations))
 
 ;Display the resulting list
 (display "Equations list: \n")
-(for ([equation answerEquations] )
+(for ([equation emra] )
    (display (~a equation " = " answerNumber "\n"))
 )
