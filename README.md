@@ -60,3 +60,33 @@ We can edit both the amount of numbers in the equation list and the answer numbe
 ```
 (define answerNumber 6)
 ```
+
+## Sample Output
+Sample output for a 6 number random list trying to evaluate to answer number of 6 :
+
+```
+Number list : (2 5 3 6 7 75)
+Random number: 6
+Total Permutations: 866732
+Correct Permutations: 4870
+Equations list:
+( / ( + 7 5 ) 2 ) = 6
+( + ( - 7 3 ) 2 ) = 6
+( + ( - 7 6 ) 5 ) = 6
+( * ( * ( - 7 6 ) 3 ) 2 ) = 6
+( - ( + ( * ( - 7 6 ) 3 ) 5 ) 2 ) = 6
+( + ( + ( - 7 6 ) 3 ) 2 ) = 6
+( - ( - ( + 7 6 ) 5 ) 2 ) = 6
+( * ( - 6 3 ) 2 ) = 6
+
+...
+
+```
+
+* UPDATE : I have changed the forloop code and managed to cut the total permutations checked by between 50k - 100k. I have added the remove duplicates line to the permutations creator:
+
+```
+  (define sets( remove-duplicates (permutations currentList))
+```
+### Limitations:
+* The program currently prints out duplicate answers to the equations

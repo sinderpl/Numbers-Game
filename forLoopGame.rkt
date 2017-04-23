@@ -37,16 +37,16 @@
      ; originalList - The list currently being used for iteration
      ; oAnswer - The numerical or Equation answer to the previous method call
 (define(findAnswers originalList oAnswer )
-  
+
     ;Outer for loop iterating through each number in list
     (for([currentNumber originalList])
-      
+
       ;Remove the used number from the current list
       (set! originalList (remove currentNumber originalList))
-      
+
       ;Inner for loop applying each sign to the equation
       (for ([sign signList])
-        
+
         ;Define the current equation
         (define currentEq (createEquation oAnswer sign currentNumber));
         ;Calculate the current Equation
@@ -62,12 +62,12 @@
               (set! answerEquations (cons currentEq answerEquations))
               (set! permCount (+ permCount 1))
               )
-            
+
             (begin
               ;Account for the possible permutation
               (set! permCount (+ permCount 1))
             ))
-        
+
         ; Evaluate if the answer is a positive integer
         ; not a negative number, fraction or zero.
         ; If it is true then we follow that branch further
@@ -90,7 +90,7 @@
 
 ;List randomisation
 (define (randomiseList numbers)
-  (for([i 6])
+  (for([i 4])
     (define random-number(list-ref numbers (random (length numbers))))
     (set! numbers(remove random-number numbers))
     (set! numberList(cons random-number numberList)))
@@ -101,7 +101,7 @@
 
     ;Original method to call with
 (define (setCreate currentList)
-  (define sets(permutations currentList)
+  (define sets( remove-duplicates (permutations currentList))
     )
   (for ([set sets])
     (define firstValue (car set))
@@ -118,10 +118,10 @@
     ;Call the main search method
 (randomiseList numbers)
 (display (~a "Number list : " numberList "\n"))
-;(set! answerNumber  (+ (random 101 1000) answerNumber ) ) 
+;(set! answerNumber  (+ (random 101 1000) answerNumber ) )
 (display (~a "Random number: " answerNumber "\n"))
 
-;Run the program 
+;Run the program
 ( setCreate numberList  )
 
 
@@ -134,5 +134,3 @@
 (for ([equation answerEquations] )
    (display (~a equation " = " answerNumber "\n"))
 )
-
-
