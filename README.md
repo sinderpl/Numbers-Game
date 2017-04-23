@@ -1,4 +1,4 @@
-#Countodwn Game
+# COUNTDOWN GAME
 
 Author
 ======
