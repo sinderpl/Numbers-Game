@@ -1,4 +1,6 @@
 #lang racket
+(define ns (make-base-namespace))
+
 ;The base numbers and operators list
 (define numList (list '+ '+ '+  1 1 1 1))
 ;The answer number we are checking for
@@ -32,30 +34,37 @@
 )
 
 ;Calculate the RPN
-(define (evaluateRPN perms)
+(define (evaluateRPN perm)
   ;Create the current object value
-  
+  (define currentEq 2)
   ;Create our stack object as a list
   (define stack (list ))
-  (for ([n perms])
+  ;Iterate through all the objects in the list
+  (for ([n perm])
+    
     (if (number? n)
-        (display "yes")
-        (display "no")
-    )
-  )
-  perms
+        ;If it is a number add it to the stack
+        (set! stack(cons n stack))
+        ;If it is a sign, apply it and get the result
+        (begin
+          (display ('n (list-ref stack 0) (list-ref stack 1)))
+          ;(createEquation (list-ref stack 0) n (list-ref stack 1) )
+           )
+          ;End define
+          )
+        ;End if
+        )
+
+
+    perm
+ )
+
+     ;Method for calculating the current equation
+(define (createEquation oAnswer sign currentNumber)
+  (define ans (~a "( " sign " "   oAnswer  " "  (~v currentNumber) " )"))
+  (eval (read (open-input-string ans )))
 )
 
-;Adapted the following two stack methods from:
-;http://stackoverflow.com/questions/1041603/how-do-i-write-push-and-pop-in-scheme
-;Push to a list like a stack
-(define (push x a-list)
-  (set-box! a-list (cons x (unbox a-list))))
-;Pop from a list like a stack
-(define (pop a-list)
-  (let ((result (first (unbox a-list))))
-    (set-box! a-list (rest (unbox a-list)))
-    result))
 
 ;Main 
 (define ExpressionMap ( map checkExpression permsList))
